@@ -14,8 +14,8 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #fafafa;
-            color: #262626;
+            background-color: #000000;
+            color: #ffffff;
         }
 
         /* Login Page */
@@ -25,11 +25,12 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #fafafa;
+            background: #000000;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 9999;
+            padding: 20px;
         }
 
         .login-page.hidden {
@@ -37,124 +38,140 @@
         }
 
         .login-container {
-            background: white;
-            border: 1px solid #dbdbdb;
-            border-radius: 1px;
-            padding: 40px 40px 30px;
-            max-width: 350px;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            max-width: 400px;
             width: 100%;
             text-align: center;
         }
 
         .login-logo {
-            font-family: 'Lobster Two', cursive;
-            font-size: 52px;
-            margin-bottom: 32px;
-            color: #262626;
-        }
-
-        .login-divider {
-            display: flex;
-            align-items: center;
-            margin: 20px 0;
-            color: #8e8e8e;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .login-divider::before,
-        .login-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: #dbdbdb;
-        }
-
-        .login-divider::before {
-            margin-right: 18px;
-        }
-
-        .login-divider::after {
-            margin-left: 18px;
-        }
-
-        .login-username-display {
-            background: #fafafa;
-            border: 1px solid #dbdbdb;
-            border-radius: 3px;
-            padding: 14px 12px;
-            margin-bottom: 8px;
-            font-size: 14px;
-            color: #262626;
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 50px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            position: relative;
         }
 
-        .online-indicator {
-            width: 8px;
-            height: 8px;
-            background: #22c55e;
+        .login-logo::before {
+            content: '';
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            border: 2.5px solid white;
             border-radius: 50%;
-            animation: pulse 2s infinite;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
-        .enter-btn {
+        .login-logo::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            top: 16px;
+            right: 16px;
+        }
+
+        .language-selector {
+            color: #a0a0a0;
+            font-size: 13px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .login-input {
+            width: 100%;
+            background: #121212;
+            border: 1px solid #262626;
+            border-radius: 6px;
+            padding: 14px 16px;
+            font-size: 14px;
+            color: #ffffff;
+            margin-bottom: 12px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .login-input::placeholder {
+            color: #737373;
+        }
+
+        .login-input:focus {
+            border-color: #3a3a3a;
+        }
+
+        .login-btn {
             background: #0095f6;
             color: white;
             border: none;
-            border-radius: 8px;
-            padding: 8px 16px;
+            border-radius: 25px;
+            padding: 14px 16px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            margin-top: 12px;
+            margin-top: 8px;
+            margin-bottom: 20px;
             transition: background 0.2s;
         }
 
-        .enter-btn:hover {
+        .login-btn:hover {
             background: #1877f2;
         }
 
-        .enter-btn:active {
-            opacity: 0.7;
+        .login-btn:active {
+            opacity: 0.8;
         }
 
-        .login-footer {
-            margin-top: 20px;
+        .forgot-password {
+            color: #e0e0e0;
             font-size: 12px;
-            color: #8e8e8e;
-        }
-
-        .login-links {
-            margin-top: 24px;
-            padding-top: 24px;
-            border-top: 1px solid #dbdbdb;
-        }
-
-        .login-links a {
-            color: #00376b;
             text-decoration: none;
-            font-size: 12px;
-            font-weight: 600;
-            margin: 0 8px;
+            display: block;
+            margin-bottom: 40px;
         }
 
-        .login-signup {
-            margin-top: 24px;
-            background: white;
-            border: 1px solid #dbdbdb;
-            border-radius: 1px;
-            padding: 24px 40px;
-            font-size: 14px;
+        .forgot-password:hover {
+            color: #ffffff;
         }
 
-        .login-signup a {
+        .create-account-btn {
+            background: transparent;
             color: #0095f6;
-            text-decoration: none;
+            border: 1px solid #262626;
+            border-radius: 6px;
+            padding: 10px 16px;
+            font-size: 14px;
             font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 40px;
+            transition: all 0.2s;
+        }
+
+        .create-account-btn:hover {
+            border-color: #3a3a3a;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .meta-logo {
+            color: #737373;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         @media (max-width: 450px) {
@@ -170,8 +187,8 @@
 
         /* Header */
         .header {
-            background-color: white;
-            border-bottom: 1px solid #dbdbdb;
+            background-color: #000000;
+            border-bottom: 1px solid #262626;
             position: fixed;
             top: 0;
             width: 100%;
@@ -191,11 +208,12 @@
             font-family: 'Lobster Two', cursive;
             font-size: 28px;
             cursor: pointer;
+            color: #ffffff;
         }
 
         .search-box {
-            background-color: #efefef;
-            border: 1px solid #dbdbdb;
+            background-color: #262626;
+            border: 1px solid #262626;
             border-radius: 8px;
             padding: 8px 16px;
             width: 268px;
@@ -208,6 +226,11 @@
             outline: none;
             width: 100%;
             text-align: center;
+            color: #ffffff;
+        }
+
+        .search-box input::placeholder {
+            color: #8e8e8e;
         }
 
         .nav-icons {
@@ -220,10 +243,11 @@
             font-size: 24px;
             cursor: pointer;
             transition: color 0.2s;
+            color: #ffffff;
         }
 
         .nav-icons i:hover {
-            color: #8e8e8e;
+            color: #b0b0b0;
         }
 
         .icon-badge {
@@ -259,8 +283,8 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background-color: white;
-            border-top: 1px solid #dbdbdb;
+            background-color: #000000;
+            border-top: 1px solid #262626;
             display: none;
             justify-content: space-around;
             align-items: center;
@@ -272,10 +296,11 @@
             font-size: 28px;
             cursor: pointer;
             transition: color 0.2s;
+            color: #ffffff;
         }
 
         .bottom-nav i:hover {
-            color: #8e8e8e;
+            color: #b0b0b0;
         }
 
         .bottom-nav .icon-badge {
@@ -306,8 +331,8 @@
 
         /* Stories */
         .stories-container {
-            background-color: white;
-            border: 1px solid #dbdbdb;
+            background-color: #000000;
+            border: 1px solid #262626;
             border-radius: 8px;
             padding: 16px 0;
             margin-bottom: 24px;
@@ -334,7 +359,7 @@
             border-radius: 50%;
             border: 3px solid #e1306c;
             padding: 2px;
-            background: white;
+            background: #000000;
         }
 
         .story-pic img {
@@ -351,6 +376,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            color: #ffffff;
         }
 
         /* Feed */
@@ -360,8 +386,8 @@
         }
 
         .post {
-            background-color: white;
-            border: 1px solid #dbdbdb;
+            background-color: #000000;
+            border: 1px solid #262626;
             border-radius: 8px;
             margin-bottom: 24px;
         }
@@ -389,10 +415,12 @@
         .post-username {
             font-weight: 600;
             font-size: 14px;
+            color: #ffffff;
         }
 
         .post-options {
             cursor: pointer;
+            color: #ffffff;
         }
 
         .post-image {
@@ -416,10 +444,11 @@
             font-size: 24px;
             cursor: pointer;
             transition: color 0.2s;
+            color: #ffffff;
         }
 
         .post-actions i:hover {
-            color: #8e8e8e;
+            color: #b0b0b0;
         }
 
         .liked {
@@ -427,7 +456,7 @@
         }
 
         .saved {
-            color: #262626 !important;
+            color: #ffffff !important;
         }
 
         .post-likes {
@@ -435,17 +464,20 @@
             font-weight: 600;
             font-size: 14px;
             margin-bottom: 8px;
+            color: #ffffff;
         }
 
         .post-caption {
             padding: 0 16px;
             font-size: 14px;
             margin-bottom: 8px;
+            color: #ffffff;
         }
 
         .post-caption .username {
             font-weight: 600;
             margin-right: 6px;
+            color: #ffffff;
         }
 
         .post-comments {
@@ -465,7 +497,7 @@
         }
 
         .add-comment {
-            border-top: 1px solid #efefef;
+            border-top: 1px solid #262626;
             padding: 12px 16px;
             display: flex;
             align-items: center;
@@ -477,6 +509,12 @@
             border: none;
             outline: none;
             font-size: 14px;
+            background: transparent;
+            color: #ffffff;
+        }
+
+        .add-comment input::placeholder {
+            color: #8e8e8e;
         }
 
         .add-comment button {
@@ -520,6 +558,7 @@
         .sidebar-username {
             font-weight: 600;
             font-size: 14px;
+            color: #ffffff;
         }
 
         .sidebar-name {
@@ -541,7 +580,7 @@
         }
 
         .suggestions-header a {
-            color: #262626;
+            color: #ffffff;
             text-decoration: none;
             font-weight: 600;
             font-size: 12px;
@@ -568,6 +607,7 @@
         .suggestion-username {
             font-weight: 600;
             font-size: 14px;
+            color: #ffffff;
         }
 
         .suggestion-reason {
@@ -615,7 +655,7 @@
         }
 
         .modal-content {
-            background-color: white;
+            background-color: #262626;
             border-radius: 12px;
             width: 90%;
             max-width: 700px;
@@ -627,7 +667,7 @@
 
         .modal-header {
             padding: 16px;
-            border-bottom: 1px solid #dbdbdb;
+            border-bottom: 1px solid #3a3a3a;
             text-align: center;
             position: relative;
         }
@@ -635,6 +675,7 @@
         .modal-header h3 {
             font-size: 16px;
             font-weight: 600;
+            color: #ffffff;
         }
 
         .modal-close {
@@ -643,6 +684,7 @@
             top: 16px;
             font-size: 24px;
             cursor: pointer;
+            color: #ffffff;
         }
 
         .modal-body {
@@ -653,7 +695,7 @@
         }
 
         .upload-area {
-            border: 2px dashed #dbdbdb;
+            border: 2px dashed #3a3a3a;
             border-radius: 8px;
             padding: 48px;
             cursor: pointer;
@@ -661,7 +703,7 @@
         }
 
         .upload-area:hover {
-            background-color: #fafafa;
+            background-color: #1a1a1a;
         }
 
         .upload-area i {
@@ -673,6 +715,7 @@
         .upload-area p {
             font-size: 22px;
             margin-bottom: 8px;
+            color: #ffffff;
         }
 
         .upload-area button {
@@ -704,12 +747,18 @@
         .caption-input {
             width: 100%;
             min-height: 100px;
-            border: 1px solid #dbdbdb;
+            border: 1px solid #3a3a3a;
             border-radius: 8px;
             padding: 12px;
             font-family: inherit;
             font-size: 14px;
             resize: vertical;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .caption-input::placeholder {
+            color: #8e8e8e;
         }
 
         .post-button {
@@ -734,7 +783,7 @@
             max-width: 935px;
             margin: 84px auto 0;
             padding: 30px 20px;
-            background-color: white;
+            background-color: #000000;
             border-radius: 8px;
         }
 
@@ -795,20 +844,22 @@
         .profile-username-large {
             font-size: 28px;
             font-weight: 300;
+            color: #ffffff;
         }
 
         .edit-profile-btn {
             background-color: transparent;
-            border: 1px solid #dbdbdb;
+            border: 1px solid #3a3a3a;
             border-radius: 8px;
             padding: 7px 16px;
             font-weight: 600;
             font-size: 14px;
             cursor: pointer;
+            color: #ffffff;
         }
 
         .edit-profile-btn:hover {
-            background-color: #fafafa;
+            background-color: #1a1a1a;
         }
 
         .profile-stats {
@@ -819,23 +870,27 @@
 
         .profile-stat {
             font-size: 16px;
+            color: #ffffff;
         }
 
         .profile-stat span {
             font-weight: 600;
+            color: #ffffff;
         }
 
         .profile-bio {
             font-size: 16px;
+            color: #ffffff;
         }
 
         .profile-fullname {
             font-weight: 600;
             margin-bottom: 4px;
+            color: #ffffff;
         }
 
         .profile-tabs {
-            border-top: 1px solid #dbdbdb;
+            border-top: 1px solid #262626;
             display: flex;
             justify-content: center;
             gap: 60px;
@@ -853,10 +908,12 @@
             padding: 12px 0;
             border-top: 1px solid transparent;
             margin-top: -17px;
+            color: #8e8e8e;
         }
 
         .profile-tab.active {
-            border-top-color: #262626;
+            border-top-color: #ffffff;
+            color: #ffffff;
         }
 
         .profile-tab i {
@@ -901,7 +958,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.65);
+            background-color: rgba(0, 0, 0, 0.85);
             z-index: 2000;
             justify-content: center;
             align-items: center;
@@ -912,7 +969,7 @@
         }
 
         .edit-modal-content {
-            background-color: white;
+            background-color: #262626;
             border-radius: 12px;
             width: 90%;
             max-width: 500px;
@@ -937,6 +994,7 @@
             top: 16px;
             font-size: 24px;
             cursor: pointer;
+            color: #ffffff;
         }
 
         .edit-modal-body {
@@ -1123,10 +1181,12 @@
         .reel-action i {
             font-size: 28px;
             margin-bottom: 4px;
+            color: #ffffff;
         }
 
         .reel-action span {
             font-size: 12px;
+            color: #ffffff;
         }
 
         .reel-action.liked i {
@@ -1138,8 +1198,8 @@
             display: none;
             max-width: 935px;
             margin: 84px auto 60px;
-            background-color: white;
-            border: 1px solid #dbdbdb;
+            background-color: #000000;
+            border: 1px solid #262626;
             border-radius: 8px;
             height: calc(100vh - 144px);
         }
@@ -1150,14 +1210,14 @@
 
         .chat-sidebar {
             width: 350px;
-            border-right: 1px solid #dbdbdb;
+            border-right: 1px solid #262626;
             display: flex;
             flex-direction: column;
         }
 
         .chat-header {
             padding: 20px;
-            border-bottom: 1px solid #dbdbdb;
+            border-bottom: 1px solid #262626;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -1171,13 +1231,14 @@
             border: none;
             cursor: pointer;
             font-size: 24px;
-            color: #262626;
+            color: #ffffff;
         }
 
         .chat-header h2 {
             font-size: 24px;
             font-weight: 600;
             margin: 0 auto;
+            color: #ffffff;
         }
 
         .new-message-btn {
@@ -1185,6 +1246,7 @@
             border: none;
             cursor: pointer;
             font-size: 24px;
+            color: #ffffff;
         }
 
         .chat-list {
@@ -1202,11 +1264,11 @@
         }
 
         .chat-item:hover {
-            background-color: #fafafa;
+            background-color: #1a1a1a;
         }
 
         .chat-item.active {
-            background-color: #efefef;
+            background-color: #262626;
         }
 
         .chat-item-avatar {
@@ -1230,6 +1292,7 @@
         .chat-item-username {
             font-weight: 600;
             font-size: 14px;
+            color: #ffffff;
         }
 
         .chat-item-time {
@@ -1246,7 +1309,7 @@
         }
 
         .chat-item-message.unread {
-            color: #262626;
+            color: #ffffff;
             font-weight: 500;
         }
 
@@ -1258,7 +1321,7 @@
 
         .chat-content-header {
             padding: 16px 20px;
-            border-bottom: 1px solid #dbdbdb;
+            border-bottom: 1px solid #262626;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -1274,6 +1337,7 @@
         .chat-content-username {
             font-weight: 600;
             font-size: 16px;
+            color: #ffffff;
         }
 
         .back-to-chats {
@@ -1299,6 +1363,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            background-color: #000000;
         }
 
         .message {
@@ -1310,21 +1375,23 @@
         }
 
         .message.sent {
-            background-color: #efefef;
+            background-color: #0D8ABC;
+            color: #ffffff;
             align-self: flex-end;
             border-bottom-right-radius: 4px;
         }
 
         .message.received {
-            background-color: #efefef;
+            background-color: #262626;
+            color: #ffffff;
             align-self: flex-start;
             border-bottom-left-radius: 4px;
-            border: 1px solid #dbdbdb;
+            border: 1px solid #3a3a3a;
         }
 
         .chat-input-container {
             padding: 20px;
-            border-top: 1px solid #dbdbdb;
+            border-top: 1px solid #262626;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -1332,11 +1399,17 @@
 
         .chat-input {
             flex: 1;
-            border: 1px solid #dbdbdb;
+            border: 1px solid #262626;
             border-radius: 24px;
             padding: 12px 16px;
             font-size: 14px;
             outline: none;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .chat-input::placeholder {
+            color: #8e8e8e;
         }
 
         .send-btn {
@@ -1392,6 +1465,18 @@
         .live-video-page.active {
             display: flex;
             flex-direction: column;
+        }
+
+        .live-video-page.landscape {
+            transform: rotate(90deg);
+            transform-origin: center center;
+            width: 100vh;
+            height: 100vw;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-left: -50vh;
+            margin-top: -50vw;
         }
 
         .live-video-header {
@@ -1494,6 +1579,9 @@
             left: 20px;
             right: 20px;
             color: white;
+            display: flex;
+            flex-direction: column;
+            max-height: 60%;
         }
 
         .live-host-info {
@@ -1513,6 +1601,88 @@
         .live-host-name {
             font-weight: 600;
             font-size: 16px;
+        }
+
+        .live-comments-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 12px;
+            overflow-y: auto;
+            max-height: 250px;
+        }
+
+        .live-comment {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            max-width: 70%;
+            word-wrap: break-word;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .live-comment-username {
+            font-weight: 600;
+            margin-right: 6px;
+            color: #0D8ABC;
+        }
+
+        .live-add-comment {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .live-comment-input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 10px 16px;
+            color: white;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .live-comment-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .live-send-btn {
+            background: #0D8ABC;
+            border: none;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .live-send-btn:hover {
+            background: #0B7399;
+            transform: scale(1.05);
+        }
+
+        .live-send-btn:disabled {
+            background: rgba(13, 138, 188, 0.5);
+            cursor: not-allowed;
         }
 
         .live-viewer-count {
@@ -1687,7 +1857,7 @@
                 left: 0;
                 right: 0;
                 bottom: 54px;
-                background-color: white;
+                background-color: #000000;
                 z-index: 1001;
             }
 
@@ -1824,27 +1994,17 @@
 <body>
     <!-- Login Page -->
     <div class="login-page" id="loginPage">
-        <div style="max-width: 350px; width: 100%;">
-            <div class="login-container">
-                <div class="login-logo">Instagram</div>
-                <div class="login-divider">Active User</div>
-                <div class="login-username-display">
-                    <span class="online-indicator"></span>
-                    <span>You Online</span>
-                </div>
-                <button class="enter-btn" id="enterBtn">Enter yourself</button>
-                <div class="login-links">
-                    <a href="#">About</a>
-                    <a href="#">Help</a>
-                    <a href="#">API</a>
-                    <a href="#">Privacy</a>
-                    <a href="#">Terms</a>
-                </div>
+        <div class="login-container">
+            <div class="language-selector">
+                <span>English (UK)</span>
+                <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i>
             </div>
-            <div class="login-signup">
-                <span style="color: #262626;">Need help? </span>
-                <a href="#">Contact Support</a>
-            </div>
+            <div class="login-logo"></div>
+            <input type="text" class="login-input" value="You Online" id="usernameInput" readonly>
+            <button class="login-btn" id="loginBtn">Log in</button>
+            <a href="#" class="forgot-password">Forgotten password?</a>
+            <button class="create-account-btn" id="createAccountBtn">Create new account</button>
+            <div class="meta-logo">Meta</div>
         </div>
     </div>
 
@@ -2041,6 +2201,15 @@
                             <i class="fa-solid fa-eye"></i> <span id="viewerNumber">234</span> watching
                         </div>
                     </div>
+                </div>
+                <div class="live-comments-section" id="liveCommentsSection">
+                    <!-- Comments will appear here -->
+                </div>
+                <div class="live-add-comment">
+                    <input type="text" class="live-comment-input" id="liveCommentInput" placeholder="Add a comment...">
+                    <button class="live-send-btn" id="liveSendBtn" disabled>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -2840,7 +3009,21 @@
             document.getElementById('profilePage').classList.remove('active');
             document.getElementById('reelsPage').classList.remove('active');
             document.getElementById('chatPage').classList.remove('active');
-            document.getElementById('liveVideoPage').classList.add('active');
+            const liveVideoPage = document.getElementById('liveVideoPage');
+            liveVideoPage.classList.add('active');
+            liveVideoPage.classList.add('landscape');
+            
+            // Auto-add comment after 15 seconds
+            setTimeout(() => {
+                const liveCommentsSection = document.getElementById('liveCommentsSection');
+                if (liveCommentsSection && liveVideoPage.classList.contains('active')) {
+                    const comment = document.createElement('div');
+                    comment.className = 'live-comment';
+                    comment.innerHTML = `<span class="live-comment-username">yourself</span>Welcome to the live stream! 🔥`;
+                    liveCommentsSection.appendChild(comment);
+                    liveCommentsSection.scrollTop = liveCommentsSection.scrollHeight;
+                }
+            }, 15000);
         }
 
         function updateProfilePage() {
@@ -2932,7 +3115,12 @@
             }
 
             if (liveBackBtn) {
-                liveBackBtn.addEventListener('click', showChatPage);
+                liveBackBtn.addEventListener('click', () => {
+                    const liveVideoPage = document.getElementById('liveVideoPage');
+                    liveVideoPage.classList.remove('active');
+                    liveVideoPage.classList.remove('landscape');
+                    showFeed();
+                });
             }
 
             // Live video upload
@@ -2973,6 +3161,52 @@
                         if (sanitized) {
                             viewerNumber.textContent = sanitized;
                         }
+                    }
+                });
+            }
+
+            // Live comments functionality
+            const liveCommentInput = document.getElementById('liveCommentInput');
+            const liveSendBtn = document.getElementById('liveSendBtn');
+            const liveCommentsSection = document.getElementById('liveCommentsSection');
+
+            function addLiveComment(text) {
+                // Clear input and disable send button immediately
+                liveCommentInput.value = '';
+                liveSendBtn.disabled = true;
+                
+                // Show comment after 15 seconds
+                setTimeout(() => {
+                    const comment = document.createElement('div');
+                    comment.className = 'live-comment';
+                    comment.innerHTML = `<span class="live-comment-username">You Online</span>${text}`;
+                    liveCommentsSection.appendChild(comment);
+                    
+                    // Auto scroll to bottom
+                    liveCommentsSection.scrollTop = liveCommentsSection.scrollHeight;
+                    
+                    // Limit comments to last 10
+                    const comments = liveCommentsSection.querySelectorAll('.live-comment');
+                    if (comments.length > 10) {
+                        comments[0].remove();
+                    }
+                }, 15000);
+            }
+
+            if (liveCommentInput && liveSendBtn) {
+                liveCommentInput.addEventListener('input', () => {
+                    liveSendBtn.disabled = liveCommentInput.value.trim() === '';
+                });
+
+                liveCommentInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && liveCommentInput.value.trim() !== '') {
+                        addLiveComment(liveCommentInput.value.trim());
+                    }
+                });
+
+                liveSendBtn.addEventListener('click', () => {
+                    if (liveCommentInput.value.trim() !== '') {
+                        addLiveComment(liveCommentInput.value.trim());
                     }
                 });
             }
@@ -3061,11 +3295,28 @@
 
         // Login functionality
         const loginPage = document.getElementById('loginPage');
-        const enterBtn = document.getElementById('enterBtn');
+        const loginBtn = document.getElementById('loginBtn');
+        const createAccountBtn = document.getElementById('createAccountBtn');
+        const usernameInput = document.getElementById('usernameInput');
 
-        if (enterBtn) {
-            enterBtn.addEventListener('click', () => {
+        if (loginBtn) {
+            loginBtn.addEventListener('click', () => {
                 loginPage.classList.add('hidden');
+            });
+        }
+
+        // Allow Enter key to login
+        if (usernameInput) {
+            usernameInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    loginPage.classList.add('hidden');
+                }
+            });
+        }
+
+        if (createAccountBtn) {
+            createAccountBtn.addEventListener('click', () => {
+                alert('Create account feature - Coming soon!');
             });
         }
     </script>
