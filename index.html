@@ -1479,6 +1479,82 @@
             margin-top: -50vw;
         }
 
+        .live-video-page.glitch {
+            animation: glitch 0.5s ease-in-out;
+        }
+
+        @keyframes glitch {
+            0%, 100% {
+                transform: translate(0);
+                filter: none;
+            }
+            10% {
+                transform: translate(-5px, 5px);
+                filter: hue-rotate(90deg);
+            }
+            20% {
+                transform: translate(5px, -5px);
+                filter: hue-rotate(-90deg);
+            }
+            30% {
+                transform: translate(-5px, -5px);
+                filter: contrast(150%);
+            }
+            40% {
+                transform: translate(5px, 5px);
+                filter: brightness(150%);
+            }
+            50% {
+                transform: translate(-3px, 3px) skew(2deg);
+                filter: hue-rotate(45deg);
+            }
+            60% {
+                transform: translate(3px, -3px) skew(-2deg);
+                filter: saturate(200%);
+            }
+            70% {
+                transform: translate(-2px, 2px);
+                filter: invert(20%);
+            }
+            80% {
+                transform: translate(2px, -2px);
+                filter: hue-rotate(-45deg);
+            }
+            90% {
+                transform: translate(-1px, 1px);
+                filter: contrast(120%);
+            }
+        }
+
+        .glitch-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                rgba(255,0,0,0.1) 0%, 
+                rgba(0,255,0,0.1) 33%, 
+                rgba(0,0,255,0.1) 66%, 
+                rgba(255,0,0,0.1) 100%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 9999;
+            animation: glitchOverlay 0.5s ease-in-out;
+        }
+
+        @keyframes glitchOverlay {
+            0%, 100% {
+                opacity: 0;
+            }
+            25%, 75% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+
         .live-video-header {
             padding: 16px 20px;
             display: flex;
@@ -1540,6 +1616,41 @@
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.3; }
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #000000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+
+        .loading-screen.active {
+            display: flex;
+        }
+
+        .loading-circle {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid #ffffff;
+            border-radius: 50%;
+            animation: rotateAlternate 2s linear infinite;
+        }
+
+        @keyframes rotateAlternate {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(180deg); }
+            50% { transform: rotate(360deg); }
+            75% { transform: rotate(180deg); }
+            100% { transform: rotate(0deg); }
         }
 
         .live-video-container {
@@ -2001,11 +2112,16 @@
             </div>
             <div class="login-logo"></div>
             <input type="text" class="login-input" value="You Online" id="usernameInput" readonly>
-            <button class="login-btn" id="loginBtn">Log in</button>
+            <button class="login-btn" id="loginBtn">Enter yourself</button>
             <a href="#" class="forgot-password">Forgotten password?</a>
             <button class="create-account-btn" id="createAccountBtn">Create new account</button>
             <div class="meta-logo">Meta</div>
         </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-circle"></div>
     </div>
 
     <!-- Header -->
@@ -2177,6 +2293,9 @@
             </button>
             <div class="live-badge">
                 LIVE
+                <span style="margin-left: 16px; font-size: 12px; font-weight: 500; opacity: 0.9;">
+                    <i class="fa-solid fa-eye" style="margin-right: 5px;"></i><span id="viewerNumber">234</span>
+                </span>
             </div>
             <button class="upload-video-btn" id="uploadVideoBtn" title="Upload Video">
                 <i class="fa-solid fa-upload"></i>
@@ -2197,9 +2316,6 @@
                     <img src="https://ui-avatars.com/api/?name=Yourself&background=0D8ABC&color=fff&size=150" alt="Host" class="live-host-avatar">
                     <div>
                         <div class="live-host-name">yourself</div>
-                        <div class="live-viewer-count" id="viewerCount" title="Click to edit">
-                            <i class="fa-solid fa-eye"></i> <span id="viewerNumber">234</span> watching
-                        </div>
                     </div>
                 </div>
                 <div class="live-comments-section" id="liveCommentsSection">
@@ -3013,6 +3129,20 @@
             liveVideoPage.classList.add('active');
             liveVideoPage.classList.add('landscape');
             
+            // Add glitch effect
+            liveVideoPage.classList.add('glitch');
+            
+            // Create glitch overlay
+            const glitchOverlay = document.createElement('div');
+            glitchOverlay.className = 'glitch-overlay';
+            document.body.appendChild(glitchOverlay);
+            
+            // Remove glitch effect and overlay after animation
+            setTimeout(() => {
+                liveVideoPage.classList.remove('glitch');
+                glitchOverlay.remove();
+            }, 500);
+            
             // Auto-add comment after 15 seconds
             setTimeout(() => {
                 const liveCommentsSection = document.getElementById('liveCommentsSection');
@@ -3148,11 +3278,10 @@
             }
 
             // Editable viewer count
-            const viewerCount = document.getElementById('viewerCount');
             const viewerNumber = document.getElementById('viewerNumber');
 
-            if (viewerCount && viewerNumber) {
-                viewerCount.addEventListener('click', () => {
+            if (viewerNumber) {
+                viewerNumber.addEventListener('click', () => {
                     const currentValue = viewerNumber.textContent;
                     const newValue = prompt('Enter viewer count:', currentValue);
                     
@@ -3298,10 +3427,18 @@
         const loginBtn = document.getElementById('loginBtn');
         const createAccountBtn = document.getElementById('createAccountBtn');
         const usernameInput = document.getElementById('usernameInput');
+        const loadingScreen = document.getElementById('loadingScreen');
 
         if (loginBtn) {
             loginBtn.addEventListener('click', () => {
-                loginPage.classList.add('hidden');
+                // Show loading screen
+                loadingScreen.classList.add('active');
+                
+                // Hide loading screen and login page after 30 seconds
+                setTimeout(() => {
+                    loadingScreen.classList.remove('active');
+                    loginPage.classList.add('hidden');
+                }, 30000);
             });
         }
 
@@ -3309,7 +3446,11 @@
         if (usernameInput) {
             usernameInput.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') {
-                    loginPage.classList.add('hidden');
+                    loadingScreen.classList.add('active');
+                    setTimeout(() => {
+                        loadingScreen.classList.remove('active');
+                        loginPage.classList.add('hidden');
+                    }, 30000);
                 }
             });
         }
